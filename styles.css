@@ -1,0 +1,77 @@
+body {
+    background-color: #f4f4f9; /* Light grey background */
+    font-family: 'Helvetica Neue', Arial, sans-serif; /* More professional font */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Full viewport height */
+    margin: 0; /* Remove default margin */
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.8); /* Translucent white background for glass effect */
+    padding: 40px; /* Increased padding for a more pronounced glass effect */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Enhanced shadow for depth */
+    border-radius: 8px; /* Rounded corners */
+    width: 400px; /* Increased width to accommodate more content */
+    max-height: 80vh; /* Max height to fit within the viewport */
+    overflow-y: auto; /* Enable vertical scrolling if content overflows */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* Align items to the top */
+    align-items: center;
+}
+
+h1 {
+    font-size: 24px; /* Larger font size for the title */
+    margin-bottom: 20px; /* Space below the title */
+}
+
+input[type="text"], button {
+    width: 100%; /* Full width of the container */
+    padding: 10px;
+    margin-top: 10px; /* Space between elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded borders for inputs and button */
+    background: rgba(255, 255, 255, 0.5); /* Slightly translucent background for inputs and buttons */
+    font-size: 16px; /* Professional font size */
+}
+
+button {
+    background-color: #25870a; /* Green color */
+    color: white;
+    font-size: 16px;
+    cursor: pointer; /* Pointer cursor on hover */
+    border: none; /* Remove border for a cleaner look */
+}
+
+button:hover {
+    background-color: #016d15; /* Darker green on hover */
+}
+
+#loading {
+    color: red;
+    display: none; /* Hidden by default */
+    text-align: center; /* Center loading text */
+    margin-top: 10px; /* Space above the loading indicator */
+}
+
+#results {
+    width: 100%; /* Full width of the container */
+    margin-top: 20px; /* Space above the results */
+}
+
+pre {
+    width: 100%; /* Full width of the container */
+    padding: 10px;
+    margin-top: 10px; /* Space between elements */
+    box-sizing: border-box; /* Include padding in width calculation */
+    border: 1px solid #ccc; /* Light grey border */
+    border-radius: 4px; /* Rounded borders */
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly translucent background */
+    white-space: pre-wrap; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
+    font-size: 14px; /* Professional font size */
+    line-height: 1.5; /* Improved readability */
+}

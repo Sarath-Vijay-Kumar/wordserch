@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Crawler</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+    <div class="container"> <!-- Container for centering and styling -->
+        <h1>Web Crawler</h1>
+        <input type="text" id="urlInput" placeholder="Enter URL to crawl">
+        <input type="text" id="keywordInput" placeholder="Enter keyword to find">
+        <button onclick="crawlURL()">Crawl URL</button>
+        <div id="loading">Loading...</div>
+        <div id="results">
+            <h2>Found Keywords</h2>
+            <pre id="found"></pre>
+            <h2>Not Found Keywords</h2>
+            <pre id="notFound"></pre>
+        </div>
+    </div>
+
+    <script>
+        async function crawlURL() {
+            const url = document.getElementById('urlInput').value;
+            const keyword = document.getElementById('keywordInput').value;
+            if (!url || !keyword) {
+                alert('Both URL and keyword are required.');
+                return;
+            }
+            document.getElementById('found').textContent = '';
+            document.getElementById('notFound').textContent = '';
+            document.getElementById('loading').style.display = 'block'; // Show loading indicator
+
+            try {
+                const response = await fetch(`http://localhost:3000/crawl?url=${encodeURIComponent(url)}&keyword=${encodeURIComponent(keyword)}`);
+                const data = await response.json();
+                if (data.error) {
+                    document.getElementById('found').textContent = 'Error: ' + data.error;
+                } else {
+                    document.getElementById('found').textContent = data.found.join('\n');
+                    document.getElementById('notFound').textContent = data.notFound.join('\n');
+                }
+            } catch (error) {
+                console.error('Fetch error:', error);
+                document.getElementById('found').textContent = 'Failed to fetch data';
+            } finally {
+                document.getElementById('loading').style.display = 'none'; // Hide loading indicator
+            }
+        }
+    </script>
+</body>
+</html>
